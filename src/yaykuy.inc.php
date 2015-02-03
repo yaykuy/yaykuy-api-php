@@ -17,7 +17,7 @@ function merchant_sell($api_token, $merchant_token, $amount_CLP){
 
 function _postYaykuy($uri,$vars){
 
-	$url="http://localhost:8080".$uri;
+	$url="https://api.yaykuy.cl".$uri;
 
 	$headers = array(
 	 'Accept: application/json',
@@ -29,8 +29,8 @@ function _postYaykuy($uri,$vars){
 	curl_setopt($handle, CURLOPT_URL, $url);
 	curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
 	curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-	//curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
-	//curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+	curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
 	 
 	curl_setopt($handle, CURLOPT_POST, true);
 	curl_setopt($handle, CURLOPT_POSTFIELDS, $data);
