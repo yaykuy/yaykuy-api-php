@@ -5,12 +5,18 @@
  *
  */
 
-function merchant_sell($api_token, $merchant_token, $amount_CLP){
+function merchant_sell($api_token, $merchant_token, $amount_CLP, $callback=null, $referencia=null){
 	$vars=array(
 		"token"=>$api_token,
 		"merchant_token"=>$merchant_token,
 		"amount_CLP"=>$amount_CLP
 	);
+	if($callback!=null){
+		$vars["callback"]=$callback;
+	}
+	if($referencia!=null){
+		$vars["referencia"]=$referencia;
+	}
 	return _postYaykuy("/merchant_sell",$vars);
 }
 
@@ -18,6 +24,7 @@ function merchant_sell($api_token, $merchant_token, $amount_CLP){
 function _postYaykuy($uri,$vars){
 
 	$url="https://api.yaykuy.cl".$uri;
+	//$url="http://localhost:8080".$uri;
 
 	$headers = array(
 	 'Accept: application/json',
